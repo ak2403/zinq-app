@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class LoginComponent extends Component {
     render() {
@@ -17,7 +18,7 @@ class LoginComponent extends Component {
                     </Form.Field>
                     <Button type='submit'>Submit</Button>
                 </Form>
-                Signup
+                <Link to='/signup'>Signup</Link>
             </div>
         )
     }

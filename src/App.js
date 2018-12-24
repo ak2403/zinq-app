@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import CommonRoute from './containers/routes/common_route'
 import LoginComponent from './containers/authentication'
 import SignupComponent from './containers/authentication/signup'
+import DashBoard from './containers/dashboard'
 
 class App extends Component {
   render() {
@@ -11,14 +13,9 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            {/* <CommonRoute exact path='/login' component={LoginForm} />
-            <CommonRoute exact path='/signup' component={SignUp} /> */}
-            <Route exact path='/' component={LoginComponent} />
-            <Route exact path='/signup' component={SignupComponent} />
-
-            {/* <ProtectedRoute exact path='/dashboard' component={DashboardView} />
-            <ProtectedRoute exact path='/projects' component={ProjectView} />
-            <ProtectedRoute exact path='/issues' component={IssueView} /> */}
+            <CommonRoute exact path='/login' component={LoginComponent} />
+            <CommonRoute exact path='/signup' component={SignupComponent} />
+            <Route exact path='/' component={SignupComponent} />
           </Switch>
         </div>
       </BrowserRouter>
