@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%; }
+
+.app-container {
+  width: 100%; }
+
+.container-center {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+  justify-content: center;
+  align-content: center; }

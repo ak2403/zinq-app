@@ -1,1 +1,20 @@
+import jwt from 'jsonwebtoken'
+
+const getToken = localStorage.getItem('authToken')
+
 export const API_URL = 'http://localhost:5000'
+
+export const AuthorizatedHeader = {
+    headers: {
+        Authorization: `Bearer ${getToken}`
+    }
+}
+
+export const retrieveToken = (getToken) => {
+    AuthorizatedHeader.headers.Authorization = `Bearer ${getToken}`
+    localStorage.setItem('authToken', getToken)
+    let decodeToken = jwt.decode(getToken)
+    return {
+        data: decodeToken
+    }
+}

@@ -13,6 +13,19 @@ export default function AuthenticationReducer(state = initialState, action) {
                 is_user_signed: true
             })
 
+        case authTypes.LOGIN_USER:
+            return Object.assign({}, state, {
+                is_user_logged: true,
+                user: action.payload.data
+            })
+
+        case authTypes.LOGOUT:
+            return Object.assign({}, state, {
+                is_user_signed: false,
+                is_user_logged: false,
+                user: ''
+            })
+
         case authTypes.RESET_SETTINGS:
             return Object.assign({}, state, {
                 is_user_signed: false

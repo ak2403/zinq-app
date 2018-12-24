@@ -1,5 +1,6 @@
 import * as authTypes from '../types/authentication_types'
 import * as postAPI from '../../api/postAPI'
+import * as config from '../../api/config'
 
 export const onSignup = data => {
     return async dispatch => {
@@ -12,6 +13,28 @@ export const onSignup = data => {
         }else{
 
         }
+    }
+}
+
+export const onLogin = data => {
+    return async dispatch => {
+        let getResponse = await postAPI.onLogin(data)
+        if(getResponse.status === 200){
+            let user_data = await config.retrieveToken(getResponse.data.token)
+            dispatch({
+                type: authTypes.LOGIN_USER,
+                payload: user_data
+            })
+        }else{
+
+        }
+    }
+}
+
+export const onLogout = () => {
+    localStorage.removeItem('authToken')
+    return {
+        type: authTypes.LOGOUT
     }
 }
 

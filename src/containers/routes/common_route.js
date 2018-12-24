@@ -3,10 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { resetSettings } from '../../redux/actions/authentication_actions'
+import Logo from '../../img/logo.png'
 
 class CommonRoute extends Component {
     shouldComponentUpdate = nextProps => {
-        let { is_user_signed } = nextProps
+        let { is_user_signed, is_user_logged } = nextProps
 
         if (is_user_signed) {
             this.props.history.push('/login')
@@ -14,14 +15,31 @@ class CommonRoute extends Component {
             return true
         }
 
+        if (is_user_logged) {
+            this.props.history.push('/')
+            return true
+        }
+
         return true
     }
+
     render() {
+        let getToken = localStorage.getItem('authToken')
+
+        if(getToken){
+            return this.props.history.push('/')
+        }
+
         let Component = this.props.component
         return (
-            <React.Fragment>
-                <Component />
-            </React.Fragment>
+                <div className="container-center">
+                    <div className="">
+                        <img src={Logo} />
+                    </div>
+                    <div className="">
+                    <Component />
+                    </div>
+                </div>
         )
     }
 }
@@ -31,7 +49,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({resetSettings}, dispa
 const mapStateToProps = props => {
     let { authentication } = props
     return {
-        is_user_signed: authentication.is_user_signed
+        is_user_signed: authentication.is_user_signed,
+        is_user_logged: authentication.is_user_logged
     }
 }
 

@@ -13,3 +13,16 @@ export const onSignup = data => {
             debugger
         })
 }
+
+export const onLogin = data => {
+    return axios.post(`${config.API_URL}/users/login`, data)
+        .then(response => {
+            return {
+                status: 200,
+                data: response.data
+            }
+        })
+        .catch(err => {
+            debugger
+        })
+}
