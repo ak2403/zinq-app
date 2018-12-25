@@ -5,6 +5,8 @@ let initialState = {
     is_user_logged: false,
     is_login_error: false,
     login_error: '',
+    is_signup_error: false,
+    signup_error: '',
     user: ''
 }
 
@@ -32,6 +34,12 @@ export default function AuthenticationReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 is_login_error: true,
                 login_error: action.payload
+            })
+
+        case authTypes.SIGNUP_ERROR:
+            return Object.assign({}, state, {
+                is_signup_error: true,
+                signup_error: action.payload
             })
 
         case authTypes.RESET_SETTINGS:

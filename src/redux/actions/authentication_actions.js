@@ -11,7 +11,10 @@ export const onSignup = data => {
                 response: getResponse
             })
         }else{
-
+            dispatch({
+                type: authTypes.SIGNUP_ERROR,
+                payload: getResponse.data
+            })
         }
     }
 }

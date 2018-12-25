@@ -13,6 +13,7 @@ export const validation_func = (type, value) => {
             return value.length === 0
 
         case 'password':
+        case 'confirm_password':
             let checkPassword = /[A-Z]/.test(value) &&
                 /[a-z]/.test(value) &&
                 /[0-9]/.test(value) &&

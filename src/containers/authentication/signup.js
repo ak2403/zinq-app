@@ -23,14 +23,15 @@ class SignupComponent extends Component {
             email: false,
             phone: false,
             password: false,
-            is_password_match: false
+            confirm_password: false,
+            agree_me: false
         }
     }
 
     changeValue = (name, value) => {
         let { user_data, validations } = this.state
         user_data[name] = value
-
+        debugger
         if (name === 'email') {
             validations['email'] = validation_func('email', value)
         } else if (name === 'phone') {
@@ -40,6 +41,7 @@ class SignupComponent extends Component {
         } else {
             validations[name] = value.length === 0 ? true : false
         }
+        
 
         this.setState({
             user_data,
@@ -62,8 +64,9 @@ class SignupComponent extends Component {
             validations[key] = validation_func(key, user_data[key])
         }
 
+        validations["agree_me"] = !this.refs.agree_me.state.checked
         let validation_array = _.values(validations)
-
+        
         if (validation_array.indexOf(true) === -1) {
             this.props.onSignup(user_data)
         }
@@ -75,6 +78,8 @@ class SignupComponent extends Component {
 
     render() {
         let { validations } = this.state
+        let { is_signup_error, signup_error } = this.props
+
         return (<div className="authentication-form">
             <Form onSubmit={this.onSubmit}>
                 <Form.Group widths='equal'>
@@ -117,12 +122,15 @@ class SignupComponent extends Component {
                         type="password"
                         placeholder='Confirm password'
                         onChange={e => this.checkValue('confirm_password', e.target.value)}
-                        error={validations.is_password_match} />
+                        error={validations.confirm_password} />
                 </Form.Field>
-                <Form.Field inline className="form-button">
-                    <Checkbox label='I agree to the Terms and Conditions' />
+                <Form.Field inline className="form-button" required>
+                    <Checkbox className={validations.agree_me ? 'error-check' : ''} ref="agree_me" label='I agree to the Terms and Conditions' />
                     <Button className="button-style" type='submit'>Signup</Button>
                 </Form.Field>
+
+                {is_signup_error ? <p className="error-message">{signup_error}</p> : ''}
+
             </Form>
 
             <p className="login-ptag"><Link to='/login'>Already have one? Login here</Link></p>
@@ -133,8 +141,10 @@ class SignupComponent extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators({ onSignup }, dispatch)
 
 const mapStateToProps = props => {
+    let { authentication } = props
     return {
-
+        is_signup_error: authentication.is_signup_error,
+        signup_error: authentication.signup_error
     }
 }
 
