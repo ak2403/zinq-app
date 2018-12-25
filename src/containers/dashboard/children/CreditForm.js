@@ -18,9 +18,9 @@ class CreditForm extends Component {
             'success': <SuccessMsg />
         }
 
-        return (<div>
+        return (<React.Fragment>
             {render_component[current_page]}
-        </div>)
+        </React.Fragment>)
     }
 }
 

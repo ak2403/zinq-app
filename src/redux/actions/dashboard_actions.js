@@ -20,3 +20,10 @@ export const submitProperty = data => {
         payload: data
     }
 }
+
+export const goback = data =>{
+    return {
+        type: dashboardTypes.TOGGLE_PAGE,
+        payload: data
+    }
+}

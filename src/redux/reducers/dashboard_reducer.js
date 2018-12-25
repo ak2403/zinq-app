@@ -32,6 +32,11 @@ export default function DashboardReducer(state = initialState, action) {
                 current_page: 'success'
             })
 
+        case dashboardTypes.TOGGLE_PAGE:
+            return Object.assign({}, state, {
+                current_page: action.payload
+            })
+
         default:
             return state
     }

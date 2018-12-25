@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { submitIncome } from '../../../redux/actions/dashboard_actions'
+import { submitIncome, goback } from '../../../redux/actions/dashboard_actions'
 
 class IncomeForm extends Component {
 
@@ -25,7 +25,7 @@ class IncomeForm extends Component {
     }
 
     onSubmit = () => {
-        let {amount_data}=this.state
+        let { amount_data } = this.state
         this.props.submitIncome(amount_data)
     }
 
@@ -36,39 +36,42 @@ class IncomeForm extends Component {
         let total_income = amount_data.income + amount_data.partner_income
         let total_expense = amount_data.expense + amount_data.partner_expense
 
-        return (<div>
+        return (<div className="credit-income">
             Total Income {total_income}
             Total Expense {total_expense}
             <Form onSubmit={this.onSubmit}>
-                <Form.Field inline>
+                <Form.Field inline className="form-element">
                     <label>Your Income</label>
                     <Input placeholder='Your Income' onChange={e => this.changeValue('income', e.target.value)} />
                 </Form.Field>
 
-                <Form.Field inline>
+                <Form.Field inline className="form-element">
                     <label>Your Expense</label>
                     <Input placeholder='Your Expense' onChange={e => this.changeValue('expense', e.target.value)} />
                 </Form.Field>
                 {type === 'couple' ?
                     <React.Fragment>
-                        <Form.Field inline>
+                        <Form.Field inline className="form-element">
                             <label>Your Partner Income</label>
                             <Input placeholder='Your Partner Income' onChange={e => this.changeValue('partner_income', e.target.value)} />
                         </Form.Field>
 
-                        <Form.Field inline>
+                        <Form.Field inline className="form-element">
                             <label>Your Partner Expense</label>
                             <Input placeholder='Your Partner Expense' onChange={e => this.changeValue('partner_expense', e.target.value)} />
                         </Form.Field>
                     </React.Fragment>
                     : ''}
-                <Button type='submit'>Next</Button>
+                <Form.Field inline className="form-button">
+                    <span onClick={()=>this.props.goback('select')}>Back</span>
+                    <Button type='submit'>Next</Button>
+                </Form.Field>
             </Form>
         </div>)
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({submitIncome}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ submitIncome, goback }, dispatch)
 
 const mapStateToProps = props => {
     let { dashboard } = props

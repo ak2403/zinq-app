@@ -3,15 +3,20 @@ import { Icon } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { selectType} from '../../../redux/actions/dashboard_actions'
+import { selectType } from '../../../redux/actions/dashboard_actions'
 
 class SelectForm extends Component {
 
     render() {
-        return (<div>
-            <Icon name="user" onClick={() => this.props.selectType('single')} />
-
-            <Icon name="users" onClick={() => this.props.selectType('couple')} />
+        return (<div className="credit-elements select-form">
+            <div className="icon-select">
+                <div className="icon-container" onClick={() => this.props.selectType('single')}>
+                    <Icon name="user" />
+                </div>
+                <div className="icon-container" onClick={() => this.props.selectType('couple')}>
+                    <Icon name="users" />
+                </div>
+            </div>
         </div>)
     }
 }

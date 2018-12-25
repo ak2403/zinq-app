@@ -7,7 +7,7 @@ import CreditForm from './children/CreditForm'
 
 class Dashboard extends Component {
     render() {
-        return (<div>
+        return (<div className="credit-component">
             <CreditForm />
         </div>)
     }
