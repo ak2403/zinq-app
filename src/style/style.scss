@@ -78,12 +78,34 @@ body{
                             min-width: 250px;
                         }
                     }
+                    .error{
+                        label{
+                            color: #9f3a38;
+                        }
+                    }
                     .form-button{
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
                         button{
                             min-width: 200px;
+                        }
+                        span{
+                            cursor: pointer;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                .credit-header{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .credit{
+                        margin: 0 20px;
+                        text-align: center;
+                        h3{
+                            padding-bottom: 10px;
                         }
                     }
                 }
