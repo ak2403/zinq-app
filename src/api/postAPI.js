@@ -23,6 +23,9 @@ export const onLogin = data => {
             }
         })
         .catch(err => {
-            debugger
+            return {
+                status: 400,
+                data: err.response ? err.response.data.message : 'Network Error'
+            }
         })
 }

@@ -3,6 +3,8 @@ import * as authTypes from '../types/authentication_types'
 let initialState = {
     is_user_signed: false,
     is_user_logged: false,
+    is_login_error: false,
+    login_error: '',
     user: ''
 }
 
@@ -24,6 +26,12 @@ export default function AuthenticationReducer(state = initialState, action) {
                 is_user_signed: false,
                 is_user_logged: false,
                 user: ''
+            })
+
+        case authTypes.LOGIN_ERROR:
+            return Object.assign({}, state, {
+                is_login_error: true,
+                login_error: action.payload
             })
 
         case authTypes.RESET_SETTINGS:

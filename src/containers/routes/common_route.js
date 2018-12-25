@@ -33,10 +33,10 @@ class CommonRoute extends Component {
     render() {
         let Component = this.props.component
         return (<div className="container-center">
-            <div className="">
+            <div className="logo-container">
                 <img src={Logo} />
             </div>
-            <div className="">
+            <div className="authentication-container">
                 <Component />
             </div>
         </div>)

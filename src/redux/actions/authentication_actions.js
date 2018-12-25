@@ -26,7 +26,10 @@ export const onLogin = data => {
                 payload: user_data
             })
         }else{
-
+            dispatch({
+                type: authTypes.LOGIN_ERROR,
+                payload: getResponse.data
+            })
         }
     }
 }

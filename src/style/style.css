@@ -7,12 +7,62 @@ body {
   width: 100%;
   height: 100%; }
 
+.error-message {
+  margin-top: 20px !important;
+  color: #9f3a38;
+  border-radius: 5px;
+  background-color: #fcf5f6;
+  font-size: 12px;
+  box-shadow: 0 0 0 1px #e0b4b4 inset, 0 0 0 0 transparent;
+  padding: 10px 30px; }
+
+.button-style {
+  color: #fff !important;
+  width: 180px !important;
+  float: right;
+  background: linear-gradient(to right, #4855a2, #805c9b) !important; }
+
+.span-style {
+  color: #805c9b; }
+
 .container-center {
   display: flex;
-  margin: 0 auto;
-  width: 90%;
+  margin: 20px auto;
+  width: 60%;
+  height: 80%;
   justify-content: center;
   align-content: center; }
+  .container-center .logo-container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .container-center .logo-container img {
+      width: 170px;
+      height: 170px; }
+  .container-center .authentication-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .container-center .authentication-container .authentication-form {
+      width: 100%; }
+    .container-center .authentication-container .login-ptag {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px; }
+      .container-center .authentication-container .login-ptag a {
+        color: #805c9b; }
+
+.form-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+  .form-button button {
+    min-width: 200px; }
+  .form-button span {
+    cursor: pointer;
+    text-decoration: underline; }
 
 .container-full {
   display: flex;
@@ -73,15 +123,6 @@ body {
               min-width: 250px; }
           .container-full .content-container .credit-component .credit-income form .error label {
             color: #9f3a38; }
-          .container-full .content-container .credit-component .credit-income form .form-button {
-            width: 100%;
-            display: flex;
-            justify-content: space-between; }
-            .container-full .content-container .credit-component .credit-income form .form-button button {
-              min-width: 200px; }
-            .container-full .content-container .credit-component .credit-income form .form-button span {
-              cursor: pointer;
-              text-decoration: underline; }
         .container-full .content-container .credit-component .credit-income .credit-header {
           width: 100%;
           display: flex;
