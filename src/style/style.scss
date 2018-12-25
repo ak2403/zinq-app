@@ -13,3 +13,17 @@ body{
     justify-content: center;
     align-content: center;
 }
+.container-full{
+    display: flex;
+    margin: 0 auto;                                 
+    width: 100%;
+    flex-direction: column;
+    .menu-container{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .content-container{
+        width: 90%;
+        margin: 0 auto;
+    }
+}

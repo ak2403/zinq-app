@@ -53,8 +53,7 @@ class SignupComponent extends Component {
 
     render() {
         let { user_data, validations } = this.state
-        return (
-            <div>
+        return (<div>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group widths='equal'>
                         <Form.Input
@@ -104,8 +103,7 @@ class SignupComponent extends Component {
                     <Button type='submit'>Signup</Button>
                 </Form>
                 <Link to='/login'>Login</Link>
-            </div>
-        )
+            </div>)
     }
 }
 

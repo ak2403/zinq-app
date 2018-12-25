@@ -23,28 +23,27 @@ class CommonRoute extends Component {
         return true
     }
 
-    render() {
+    componentDidMount = () => {
         let getToken = localStorage.getItem('authToken')
-
-        if(getToken){
-            return this.props.history.push('/')
+        if (getToken) {
+            this.props.history.push('/')
         }
+    }
 
+    render() {
         let Component = this.props.component
-        return (
-                <div className="container-center">
-                    <div className="">
-                        <img src={Logo} />
-                    </div>
-                    <div className="">
-                    <Component />
-                    </div>
-                </div>
-        )
+        return (<div className="container-center">
+            <div className="">
+                <img src={Logo} />
+            </div>
+            <div className="">
+                <Component />
+            </div>
+        </div>)
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({resetSettings}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ resetSettings }, dispatch)
 
 const mapStateToProps = props => {
     let { authentication } = props

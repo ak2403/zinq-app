@@ -33,8 +33,7 @@ class LoginComponent extends Component {
     render() {
         let { validations } = this.state
 
-        return (
-            <div>
+        return (<div>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Field>
                         <Form.Input
@@ -54,8 +53,7 @@ class LoginComponent extends Component {
                     <Button type='submit'>Login</Button>
                 </Form>
                 <Link to='/signup'>Signup</Link>
-            </div>
-        )
+            </div>)
     }
 }
 
