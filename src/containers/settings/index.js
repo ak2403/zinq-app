@@ -29,14 +29,12 @@ class Settings extends Component {
 
         if (user_data._id === '') {
             this.props.getUser(user.id)
-            return true
         }
 
         if (update_user._id !== user_data._id) {
             this.setState({
                 update_user: user_data
             })
-            return true
         }
 
         return true
