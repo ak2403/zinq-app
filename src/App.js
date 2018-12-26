@@ -7,8 +7,14 @@ import ProtectedRoute from './containers/routes/protected_route'
 import LoginComponent from './containers/authentication'
 import SignupComponent from './containers/authentication/signup'
 import DashBoard from './containers/dashboard'
+import Settings from './containers/settings'
+import { updateToken } from './redux/actions/authentication_actions'
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.updateToken()
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -17,6 +23,7 @@ class App extends Component {
             <CommonRoute exact path='/login' component={LoginComponent} />
             <CommonRoute exact path='/signup' component={SignupComponent} />
             <ProtectedRoute exact exact path='/' component={DashBoard} />
+            <ProtectedRoute exact exact path='/settings' component={Settings} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -24,4 +31,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({ updateToken }, dispatch)
+
+export default connect(null, mapDispatchToProps)(App);

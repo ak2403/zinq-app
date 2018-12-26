@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import { onLogout } from '../../redux/actions/authentication_actions'
 
 class ProtectedRoute extends Component {
-    
+
     logout = () => {
         this.props.history.push('/login')
         this.props.onLogout()
@@ -25,7 +25,17 @@ class ProtectedRoute extends Component {
         return (<div className="container-full">
             <div className="menu-container">
                 <Menu secondary>
+                    <Menu.Item
+                        name='credits'
+                        onClick={() => this.props.history.push('/')}
+                        />
                     <Menu.Menu position='right'>
+                        <Icon 
+                            className="user-icon" 
+                            name="user circle" 
+                            onClick={() => this.props.history.push('/settings')} 
+                            />
+
                         <Menu.Item
                             onClick={this.logout}
                             name='logout'

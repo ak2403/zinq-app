@@ -79,6 +79,11 @@ body {
   .container-full .menu-container {
     width: 100%;
     margin-bottom: 10px; }
+    .container-full .menu-container .menu {
+      align-items: center; }
+    .container-full .menu-container .user-icon {
+      font-size: 22px;
+      cursor: pointer; }
   .container-full .content-container {
     width: 90%;
     margin: 0 auto;
@@ -159,3 +164,21 @@ body {
           border-radius: 5px;
           color: #721c24;
           background-color: #f8d7da; }
+
+.settings-container {
+  width: 100%; }
+  .settings-container .settings-list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center; }
+    .settings-container .settings-list .settings-option {
+      display: flex;
+      width: 60%;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0; }
+      .settings-container .settings-list .settings-option div {
+        width: 40%; }
+      .settings-container .settings-list .settings-option .input {
+        width: 100%; }

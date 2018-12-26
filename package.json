@@ -23,6 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts  --inspect-brk test --no-cache --verbose=false --runInBand",
     "eject": "react-scripts eject",
     "styles": "nodemon -e scss -x node-sass --include-path scss src/style/style.scss src/style/style.css",
     "client": "concurrently \"npm run start\" \"npm run styles\""
