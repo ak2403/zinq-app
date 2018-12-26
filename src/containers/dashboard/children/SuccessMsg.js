@@ -21,14 +21,16 @@ class SuccessMsg extends Component {
 
         let message = ''
 
-        if(income_percentage <= 0.5 && property_percentage >= 0.2){
-            message = 'Congrats'
-        }else{
-            message = 'Sorry'
-        }
+        // if(income_percentage <= 0.5 && property_percentage >= 0.2){
+            message = <React.Fragment><h1>Congratulations.</h1> You are eligible for the credits.</React.Fragment>
+        // }else{
+            // message = <React.Fragment><h1>Sorry!!!</h1><p>You didn't meet the requirements. But don't lose hope.<br/> Please call us and we will guide you futhur for your profile.</p></React.Fragment>
+        // }
 
-        return (<div>
-            {message}
+        return (<div className="success-container">
+            <div className="final-message success">
+                {message}
+            </div>
         </div>)
     }
 }

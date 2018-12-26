@@ -31,18 +31,19 @@ class SignupComponent extends Component {
     changeValue = (name, value) => {
         let { user_data, validations } = this.state
         user_data[name] = value
-        debugger
+        
         if (name === 'email') {
             validations['email'] = validation_func('email', value)
         } else if (name === 'phone') {
             validations['phone'] = validation_func('phone', value)
         } else if (name === 'password') {
             validations['password'] = validation_func('password', value)
+        } else if (name === 'confirm_password') {
+            validations['confirm_password'] = validation_func('confirm_password', value)
         } else {
             validations[name] = value.length === 0 ? true : false
         }
-        
-
+    
         this.setState({
             user_data,
             validations
@@ -51,9 +52,11 @@ class SignupComponent extends Component {
 
     checkValue = (name, value) => {
         let { user_data, validations } = this.state
+        user_data['confirm_password'] = value
         validations['is_password_match'] = user_data.password !== value
         this.setState({
-            validations
+            validations,
+            user_data
         })
     }
 
