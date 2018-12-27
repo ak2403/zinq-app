@@ -32,3 +32,20 @@ export const onLogin = data => {
             }
         })
 }
+
+export const editUser = data => {
+    const userID = data['_id']
+    return axios.post(`${config.API_URL}/users/${userID}`, data)
+        .then(response => {
+            return {
+                status: 200,
+                data: response.data
+            }
+        })
+        .catch(err => {
+            return {
+                status: 400,
+                data: err.response ? err.response.data.message : 'Network Error'
+            }
+        })
+}

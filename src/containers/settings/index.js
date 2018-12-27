@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Message, Icon } from 'semantic-ui-react'
 import _ from 'lodash'
-import { getUser } from '../../redux/actions/settings_actions'
+import { getUser, updateDetails, resetSettings } from '../../redux/actions/settings_actions'
 
 class Settings extends Component {
 
@@ -62,7 +62,7 @@ class Settings extends Component {
         }
 
         if (is_valid) {
-
+            this.props.updateDetails(update_user)
         }
         this.setState({
             validations
@@ -72,6 +72,13 @@ class Settings extends Component {
 
     render() {
         let { update_user, validations } = this.state
+        let { is_user_updated } = this.props
+
+        if (is_user_updated) {
+            setInterval(() => {
+                this.props.resetSettings()
+            }, 1000)
+        }
 
         return (<div className="settings-container">
             <div className="settings-list">
@@ -119,6 +126,10 @@ class Settings extends Component {
                                 />
                             </div>
                         </div>
+                        {is_user_updated ? <Message success>
+                            <Icon name='thumbs up' />
+                            Your details are updated successfully.
+                            </Message> : ''}
                         <div>
                             <Button onClick={this.updateChange}>Update the changes</Button>
                         </div>
@@ -129,13 +140,14 @@ class Settings extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getUser }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ getUser, updateDetails, resetSettings }, dispatch)
 
 const mapStateToProps = props => {
     let { settings, authentication } = props
     return {
         user: authentication.user,
-        user_data: settings.user_data
+        user_data: settings.user_data,
+        is_user_updated: settings.is_user_updated
     }
 }
 

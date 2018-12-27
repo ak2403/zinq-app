@@ -19,3 +19,27 @@ export const getUser = userID => {
         }
     }
 }
+
+export const updateDetails = data => {
+    return async dispatch => {
+        let getResponse = await postAPI.editUser(data)
+        if(getResponse.status === 200){
+            dispatch({
+                type: settingsTypes.CHANGE_DETAILS,
+                payload: getResponse.data
+            })
+        }else{
+            debugger
+            // dispatch({
+            //     type: authTypes.SIGNUP_ERROR,
+            //     payload: getResponse.data
+            // })
+        }
+    }    
+}
+
+export const resetSettings = () => {
+    return {
+        type: settingsTypes.RESET_SETTINGS
+    }
+}
