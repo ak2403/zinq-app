@@ -13,14 +13,14 @@ class Settings extends Component {
     }
 
     componentDidMount = () => {
-        let { user_data } = this.props
+        let { user_data, user } = this.props
         let { update_user } = this.state
-
-        if (update_user._id !== user_data._id) {
-            this.setState({
-                update_user: user_data
-            })
-        }
+        this.props.getUser(user.id)
+        // if (update_user._id !== user_data._id) {
+        //     this.setState({
+        //         update_user: user_data
+        //     })
+        // }
     }
 
     shouldComponentUpdate = nextProps => {

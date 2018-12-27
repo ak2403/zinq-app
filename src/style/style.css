@@ -146,6 +146,10 @@ body {
             text-align: center; }
             .container-full .content-container .credit-component .credit-income .credit-header .credit h3 {
               padding-bottom: 10px; }
+          .container-full .content-container .credit-component .credit-income .credit-header .income {
+            color: #155724; }
+          .container-full .content-container .credit-component .credit-income .credit-header .expense {
+            color: #9f3a38; }
       .container-full .content-container .credit-component .success-container {
         width: 100%; }
         .container-full .content-container .credit-component .success-container .final-message {

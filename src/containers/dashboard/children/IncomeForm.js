@@ -86,13 +86,13 @@ class IncomeForm extends Component {
 
         return (<div className="credit-income">
             <div className="credit-header">
-                <div className="credit">
+                <div className="credit income">
                     <h3>Total Income</h3>
-                    {total_income}
+                    $ {total_income}
                 </div>
-                <div className="credit">
+                <div className="credit expense">
                     <h3>Total Expense</h3>
-                    {total_expense}
+                    $ {total_expense}
                 </div>
             </div>
             <Form onSubmit={this.onSubmit}>
