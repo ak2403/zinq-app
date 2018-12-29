@@ -6,6 +6,10 @@ body{
 #root, .app-container{
     width: 100%;
     height: 100%;
+    background: linear-gradient(to right, #4855a2 ,#805c9b) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .error-message{
     margin-top: 20px !important;
@@ -35,28 +39,33 @@ body{
 }
 .container-center{
     display: flex;
-    margin: 20px auto;                                 
+    padding: 30px 0;
     width: 60%;
-    height: 80%;
-    justify-content: center;
-    align-content: center;
+    background: #fff;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     .logo-container{
-        width: 40%;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 50px;
         img{
-            width: 170px;
-            height: 170px;
+            width: 80px;
+            height: 80px;
         }
     }
     .authentication-container{
-        width: 60%;
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         .authentication-form{
             width: 100%;
+            .agree_me{
+                font-size: 12px;
+            }
             .detail-list{
                 border: 1px solid #805c9b;
                 color: #4855a2;
@@ -92,6 +101,7 @@ body{
     margin: 0 auto;                                 
     width: 100%;
     height: 100%;
+    background: #fff;
     flex-direction: column;
     .menu-container{
         width: 100%;
@@ -128,10 +138,11 @@ body{
                     display: flex;
                     width: 100%;
                     justify-content: center;
+                    flex-wrap: wrap;
                     .icon-container{
-                        width: 30%;
+                        flex: 1;
                         height: 200px;
-                        margin: 0 20px;
+                        margin: 20px;
                         border: 1px solid #e0e0e0;
                         background-color: #fbfbfb;
                         border-radius: 5px;

@@ -15,7 +15,8 @@ class LoginComponent extends Component {
         validations: {
             email: false,
             password: false
-        }
+        },
+        is_submit: false
     }
 
     changeMail = value => {
@@ -40,16 +41,21 @@ class LoginComponent extends Component {
     }
 
     onSubmit = () => {
-        let { login_data, validations } = this.state
+        let { login_data, validations, is_submit } = this.state
         let validation_array = _.values(validations)
 
         if (validation_array.indexOf(true) === -1) {
             this.props.onLogin(login_data)
+            is_submit = true
         }
+
+        this.setState({
+            is_submit
+        })
     }
 
     render() {
-        let { validations } = this.state
+        let { validations, is_submit } = this.state
         let { is_login_error, login_error } = this.props
 
         return (<div className="authentication-form">
@@ -74,7 +80,7 @@ class LoginComponent extends Component {
 
                 <Form.Field inline className="form-button">
                     <span className="span-style">Forgot password?</span>
-                    <Button className="button-style" type='submit'>Login</Button>
+                    <Button className="button-style" type='submit' loading={is_submit}>Login</Button>
                 </Form.Field>
             </Form>
             

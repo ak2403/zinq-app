@@ -25,7 +25,8 @@ class SignupComponent extends Component {
             password: false,
             confirm_password: false,
             agree_me: false
-        }
+        },
+        is_submit: false
     }
 
     changeValue = (name, value) => {
@@ -61,7 +62,7 @@ class SignupComponent extends Component {
     }
 
     onSubmit = () => {
-        let { user_data, validations } = this.state
+        let { user_data, validations, is_submit } = this.state
 
         for (let key in user_data) {
             validations[key] = validation_func(key, user_data[key])
@@ -72,15 +73,17 @@ class SignupComponent extends Component {
         
         if (validation_array.indexOf(true) === -1) {
             this.props.onSignup(user_data)
+            is_submit = true
         }
 
         this.setState({
-            validations
+            validations,
+            is_submit
         })
     }
 
     render() {
-        let { validations } = this.state
+        let { validations, is_submit } = this.state
         let { is_signup_error, signup_error } = this.props
 
         return (<div className="authentication-form">
@@ -135,8 +138,8 @@ class SignupComponent extends Component {
                         error={validations.confirm_password} />
                 </Form.Field>
                 <Form.Field inline className="form-button" required>
-                    <Checkbox className={validations.agree_me ? 'error-check' : ''} ref="agree_me" label='I agree to the Terms and Conditions' />
-                    <Button className="button-style" type='submit'>Signup</Button>
+                    <Checkbox className={`agree_me ${validations.agree_me ? 'error-check' : ''}`} ref="agree_me" label='I agree to the Terms and Conditions' />
+                    <Button className="button-style" type='submit' loading={is_submit}>Signup</Button>
                 </Form.Field>
 
                 {is_signup_error ? <p className="error-message">{signup_error}</p> : ''}
