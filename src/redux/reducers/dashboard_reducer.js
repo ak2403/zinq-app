@@ -1,7 +1,7 @@
 import * as dashboardTypes from '../types/dashboard_types'
 
 let initialState = {
-    current_page: 'income',
+    current_page: 'select',
     type: '',
     income: {},
     property: {}

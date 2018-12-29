@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken'
 
 const getToken = localStorage.getItem('authToken')
 
-// export const API_URL = 'https://fierce-springs-38062.herokuapp.com'
-export const API_URL = 'http://localhost:5000'
+export const API_URL = 'https://fierce-springs-38062.herokuapp.com'
+// export const API_URL = 'http://localhost:5000'
 
 export const AuthorizatedHeader = {
     headers: {
