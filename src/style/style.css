@@ -53,6 +53,12 @@ body {
     align-items: center; }
     .container-center .authentication-container .authentication-form {
       width: 100%; }
+      .container-center .authentication-container .authentication-form .detail-list {
+        border: 1px solid #805c9b;
+        color: #4855a2;
+        border-radius: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px; }
     .container-center .authentication-container .login-ptag {
       margin-top: 20px;
       text-align: center;

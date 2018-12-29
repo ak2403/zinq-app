@@ -118,6 +118,13 @@ class SignupComponent extends Component {
                         placeholder='password'
                         onChange={e => this.changeValue('password', e.target.value)}
                         error={validations.password} />
+                        <ul className="detail-list">
+                            <li>The password length should be more than 4</li>
+                            <li>There should be atleast one uppercase letter</li>
+                            <li>There should be atleast one lowercase letter</li>
+                            <li>There should be atleast one number</li>
+                            <li>There should be atleast one special characters</li>
+                        </ul>
                 </Form.Field>
                 <Form.Field>
                     <Form.Input

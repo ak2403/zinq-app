@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Input, Button, Message, Icon } from 'semantic-ui-react'
+import { Input, Button, Message, Icon, Checkbox, Segment } from 'semantic-ui-react'
 import _ from 'lodash'
 import { getUser, updateDetails, resetSettings } from '../../redux/actions/settings_actions'
 
@@ -126,6 +126,16 @@ class Settings extends Component {
                                 />
                             </div>
                         </div>
+                        <div className="settings-option">
+                            <div>Is Activated</div>
+                            <div>
+                                <Checkbox 
+                                    toggle 
+                                    checked={update_user.is_activated}
+                                    onChange={e => this.changeValue('is_activated', !update_user.is_activated)} />
+                            </div>
+                        </div>
+
                         {is_user_updated ? <Message success>
                             <Icon name='thumbs up' />
                             Your details are updated successfully.

@@ -57,6 +57,13 @@ body{
         align-items: center;
         .authentication-form{
             width: 100%;
+            .detail-list{
+                border: 1px solid #805c9b;
+                color: #4855a2;
+                border-radius: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
         }
         .login-ptag{
             margin-top: 20px;
