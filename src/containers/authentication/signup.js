@@ -32,7 +32,7 @@ class SignupComponent extends Component {
     changeValue = (name, value) => {
         let { user_data, validations } = this.state
         user_data[name] = value
-        
+
         if (name === 'email') {
             validations['email'] = validation_func('email', value)
         } else if (name === 'phone') {
@@ -44,7 +44,7 @@ class SignupComponent extends Component {
         } else {
             validations[name] = value.length === 0 ? true : false
         }
-    
+
         this.setState({
             user_data,
             validations
@@ -70,7 +70,7 @@ class SignupComponent extends Component {
 
         validations["agree_me"] = !this.refs.agree_me.state.checked
         let validation_array = _.values(validations)
-        
+
         if (validation_array.indexOf(true) === -1) {
             this.props.onSignup(user_data)
             is_submit = true
@@ -80,6 +80,19 @@ class SignupComponent extends Component {
             validations,
             is_submit
         })
+    }
+
+    shouldComponentUpdate = nextProps => {
+        let { is_signup_error } = nextProps
+        let { is_submit } = this.state
+
+        if (is_submit && is_signup_error) {
+            this.setState({
+                is_submit: false
+            })
+        }
+
+        return true
     }
 
     render() {
@@ -121,13 +134,13 @@ class SignupComponent extends Component {
                         placeholder='password'
                         onChange={e => this.changeValue('password', e.target.value)}
                         error={validations.password} />
-                        <ul className="detail-list">
-                            <li>The password length should be more than 4</li>
-                            <li>There should be atleast one uppercase letter</li>
-                            <li>There should be atleast one lowercase letter</li>
-                            <li>There should be atleast one number</li>
-                            <li>There should be atleast one special characters</li>
-                        </ul>
+                    <ul className="detail-list">
+                        <li>The password length should be more than 4</li>
+                        <li>There should be atleast one uppercase letter</li>
+                        <li>There should be atleast one lowercase letter</li>
+                        <li>There should be atleast one number</li>
+                        <li>There should be atleast one special characters</li>
+                    </ul>
                 </Form.Field>
                 <Form.Field>
                     <Form.Input

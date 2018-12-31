@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { Menu, Icon } from 'semantic-ui-react'
 import { onLogout } from '../../redux/actions/authentication_actions'
 
@@ -12,16 +12,14 @@ class ProtectedRoute extends Component {
         this.props.onLogout()
     }
 
-    componentDidMount = () => {
+    render() {
+        let Component = this.props.component
         let getToken = localStorage.getItem('authToken')
 
         if (!getToken) {
-            return this.props.history.push('/login')
+            return <Redirect to='/login' />
         }
-    }
 
-    render() {
-        let Component = this.props.component
         return (<div className="container-full">
             <div className="menu-container">
                 <Menu secondary>

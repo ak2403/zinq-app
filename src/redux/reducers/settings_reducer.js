@@ -9,12 +9,12 @@ export default function SettingsReducer(state = initialState, action) {
     switch (action.type) {
         case settingsTypes.UPDATE_USER:
             return Object.assign({}, state, {
-                user_data: action.payload
+                user_data: action.payload || {_id: ''}
             })
 
         case settingsTypes.CHANGE_DETAILS:
             return Object.assign({}, state, {
-                user_data: action.payload,
+                user_data: action.payload || {_id: ''},
                 is_user_updated: true
             })
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CommonRoute from './containers/routes/common_route'
@@ -24,6 +24,7 @@ class App extends Component {
             <CommonRoute exact path='/signup' component={SignupComponent} />
             <ProtectedRoute exact exact path='/' component={DashBoard} />
             <ProtectedRoute exact exact path='/settings' component={Settings} />
+            <Redirect to="/login" />
           </Switch>
         </div>
       </BrowserRouter>

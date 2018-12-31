@@ -13,14 +13,8 @@ class Settings extends Component {
     }
 
     componentDidMount = () => {
-        let { user_data, user } = this.props
-        let { update_user } = this.state
+        let { user } = this.props
         this.props.getUser(user.id)
-        // if (update_user._id !== user_data._id) {
-        //     this.setState({
-        //         update_user: user_data
-        //     })
-        // }
     }
 
     shouldComponentUpdate = nextProps => {
@@ -129,10 +123,16 @@ class Settings extends Component {
                         <div className="settings-option">
                             <div>Is Activated</div>
                             <div>
-                                <Checkbox 
-                                    toggle 
+                                <Checkbox
+                                    toggle
                                     checked={update_user.is_activated}
                                     onChange={e => this.changeValue('is_activated', !update_user.is_activated)} />
+                            </div>
+                        </div>
+                        <div className="settings-option">
+                            <div>Email Verification</div>
+                            <div>
+                                {update_user.is_email_confirmed ? 'Verified' : 'Not Verified '}
                             </div>
                         </div>
 
