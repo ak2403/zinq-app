@@ -16,4 +16,5 @@ To run this project in your pc:
 4. After successful installation, run `npm run server`
 
 Here is the live demo in Heroku https://zinq-app.herokuapp.com/
+
 **Note: If the heroku page shows `Application Error`, please reload the page **
