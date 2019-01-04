@@ -33,6 +33,22 @@ export const onLogin = data => {
         })
 }
 
+export const onGoogleLogin = data => {
+    return axios.post(`${config.API_URL}/users/google_login`, data)
+        .then(response => {
+            return {
+                status: 200,
+                data: response.data
+            }
+        })
+        .catch(err => {
+            return {
+                status: 400,
+                data: err.response ? err.response.data.message : 'Network Error'
+            }
+        })
+}
+
 export const editUser = data => {
     const userID = data['_id']
     return axios.post(`${config.API_URL}/users/${userID}`, data)

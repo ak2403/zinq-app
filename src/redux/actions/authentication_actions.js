@@ -37,6 +37,24 @@ export const onLogin = data => {
     }
 }
 
+export const googleLogin = data => {
+    return async dispatch => {
+        let getResponse = await postAPI.onGoogleLogin(data)
+        if (getResponse.status === 200) {
+            let user_data = await config.retrieveToken(getResponse.data.token)
+            dispatch({
+                type: authTypes.LOGIN_USER,
+                payload: user_data
+            })
+        } else {
+            dispatch({
+                type: authTypes.LOGIN_ERROR,
+                payload: getResponse.data
+            })
+        }
+    }
+}
+
 export const updateToken = () => {
     return async dispatch => {
         const getToken = localStorage.getItem('authToken')
